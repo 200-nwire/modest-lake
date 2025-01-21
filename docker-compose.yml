@@ -177,9 +177,9 @@ services:
 #      - AWS_SECRET_ACCESS_KEY=password
 #      - AWS_REGION=us-east-1
 #    volumes:
-#      - ./data/html:/var/lib/ngods/html
-#      - ./data/stage:/var/lib/ngods/stage
-#      - ./data/spark/notebooks:/var/lib/ngods/notebooks
+#      - ./aio/html:/var/lib/ngods/html
+#      - ./aio/stage:/var/lib/ngods/stage
+#      - ./aio/notebooks:/var/lib/ngods/notebooks
 #    ports:
 #      - '8888:8888' # Spark notebook port
 #      - '7077:7077' # Spark port
