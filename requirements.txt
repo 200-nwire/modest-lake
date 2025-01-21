@@ -1,0 +1,14 @@
+
+# General dependencies
+dagster
+dagit
+dlt
+trino[sqlalchemy]
+pyiceberg
+pandas
+matplotlib
+seaborn
+jupyter
+# dbt dependencies
+dbt-core
+dbt-trino

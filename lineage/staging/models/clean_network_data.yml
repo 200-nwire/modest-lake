@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: bronze
+    tables:
+      - name: network_data
+
+models:
+  - name: staging_network_data
+    description: "Cleaned and structured network data."
+    tags: ["staging"]
+    columns:
+      - name: source
+        description: "Source of the event."
+      - name: sourcetype
+        description: "Type of the source."
+      - name: _time
+        description: "Timestamp of the event."
+
+  - name: analytics_summary
+    description: "Aggregated summary of network data."
+    tags: ["analytics"]
+    columns:
+      - name: sourcetype
+        description: "Type of the source."
+      - name: total_events
+        description: "Total number of events."

@@ -1,0 +1,1 @@
+// Cube.js dimensions definitions.

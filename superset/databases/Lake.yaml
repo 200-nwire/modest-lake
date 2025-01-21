@@ -1,0 +1,13 @@
+database_name: Lake
+sqlalchemy_uri: trino://admin@trino:8080/iceberg
+cache_timeout: null
+expose_in_sqllab: true
+allow_run_async: false
+allow_ctas: false
+allow_cvas: false
+allow_dml: false
+allow_csv_upload: false
+extra:
+  allows_virtual_table_explore: true
+uuid: 0cc28d4a-271d-44ee-9753-181fd94251cb
+version: 1.0.0

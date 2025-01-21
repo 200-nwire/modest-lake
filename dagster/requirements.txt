@@ -1,0 +1,4 @@
+dlt
+sqlalchemy-trino
+pandas
+requests

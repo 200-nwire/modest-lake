@@ -1,0 +1,6 @@
+
+load_from:
+  - python_file:
+      relative_path: pipelines/load_bronze_dlt.py
+  - python_file:
+      relative_path: pipelines/run_dbt_silver.py

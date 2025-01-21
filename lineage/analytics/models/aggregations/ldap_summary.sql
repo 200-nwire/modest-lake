@@ -1,0 +1,1 @@
+-- SQL model for LDAP aggregations.

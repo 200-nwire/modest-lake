@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  trino:
+    image: trinodb/trino
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./storage/trino:/etc/trino
+  cubejs:
+    image: cubejs/cube
+    ports:
+      - '4000:4000'
+    environment:
+      - CUBEJS_DEV_MODE=true

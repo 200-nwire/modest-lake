@@ -1,0 +1,8 @@
+name: "lineage_project_analytics"
+version: "1.0"
+profile: "default"
+
+models:
+  lineage_project:
+    analytics:
+      +materialized: "table"

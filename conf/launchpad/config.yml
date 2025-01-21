@@ -1,0 +1,114 @@
+# Homer dashboard configuration
+title: "Data Pipeline Tools"
+subtitle: "Quick access to all components"
+icon: "fas fa-tools"
+
+header: true
+footer: '<p>Created with <span class="has-text-danger">❤️</span> with <a href="https://bulma.io/">bulma</a>, <a href="https://vuejs.org/">vuejs</a> & <a href="https://fontawesome.com/">font awesome</a> // Fork me on <a href="https://github.com/bastienwirtz/homer"><i class="fab fa-github-alt"></i></a></p>'
+
+# Theme and Color Overrides
+theme: default
+colors:
+  light:
+    highlight-primary: "#3367d6"
+    highlight-secondary: "#4285f4"
+    highlight-hover: "#5a95f5"
+    background: "#f5f5f5"
+    card-background: "#ffffff"
+    text: "#363636"
+    text-header: "#ffffff"
+    text-title: "#303030"
+    text-subtitle: "#424242"
+    card-shadow: rgba(0, 0, 0, 0.1)
+    link: "#3273dc"
+    link-hover: "#363636"
+  dark:
+    highlight-primary: "#3367d6"
+    highlight-secondary: "#4285f4"
+    highlight-hover: "#5a95f5"
+    background: "#131313"
+    card-background: "#2b2b2b"
+    text: "#eaeaea"
+    text-header: "#ffffff"
+    text-title: "#fafafa"
+    text-subtitle: "#f5f5f5"
+    card-shadow: rgba(0, 0, 0, 0.4)
+    link: "#3273dc"
+    link-hover: "#ffdd57"
+
+# Message
+message:
+  style: "is-dark"
+  title: "Welcome to Data Pipeline Tools!"
+  icon: "fa fa-info-circle"
+  content: "Manage your data pipeline efficiently. Access all tools in one place. Visit <a href='https://github.com/bastienwirtz/homer'>Homer's repository</a> for more information."
+
+# Links to services
+services:
+  - name: "Ingestion"
+    icon: "fas fa-database"
+    items:
+      - name: "MinIO"
+        subtitle: "S3-compatible storage"
+        logo: "https://min.io/resources/img/logo.svg"
+        url: "http://localhost:9000"
+      - name: "Nessie"
+        subtitle: "Version control for Iceberg tables"
+        logo: "https://projectnessie.org/img/nessie.svg"
+        url: "http://localhost:19120"
+
+  - name: "Compute"
+    icon: "fas fa-server"
+    items:
+      - name: "Trino"
+        subtitle: "Distributed SQL query engine"
+        logo: "https://trino.io/img/logo.svg"
+        url: "http://localhost:8080"
+      - name: "Dremio"
+        subtitle: "Self-service data platform"
+        logo: "https://dremio.com/wp-content/uploads/2021/06/Dremio_Logo_Dark.svg"
+        url: "http://localhost:9047"
+
+  - name: "Orchestration"
+    icon: "fas fa-cogs"
+    items:
+      - name: "Dagster"
+        subtitle: "Data orchestration for pipelines"
+        logo: "https://dagster.io/images/logos/dagster-logo.png"
+        url: "http://localhost:3000"
+
+  - name: "Analytics"
+    icon: "fas fa-chart-line"
+    items:
+      - name: "Superset"
+        subtitle: "BI dashboards and visualization"
+        logo: "https://superset.apache.org/assets/images/superset-logo-horiz-apache.svg"
+        url: "http://localhost:8088"
+      - name: "Jupyter Notebook"
+        subtitle: "Interactive data exploration"
+        logo: "https://jupyter.org/assets/main-logo.svg"
+        url: "http://localhost:8888"
+      - name: "Hue SQL Client"
+        subtitle: "Explore your data lake with SQL"
+        logo: "https://gethue.com/assets/images/logo.svg"
+        url: "http://localhost:8889"
+
+  - name: "Semantic Layer"
+    icon: "fas fa-layer-group"
+    items:
+      - name: "Cube.js"
+        subtitle: "Metrics and semantic layer"
+        logo: "https://cube.dev/images/cubejs-logo.svg"
+        url: "http://localhost:4000"
+
+  - name: "Production Tools"
+    icon: "fas fa-code"
+    items:
+      - name: "API Server"
+        subtitle: "Backend API for service portal"
+        logo: "https://nodejs.org/static/images/logo.svg"
+        url: "http://localhost:4000"
+      - name: "Frontend Portal"
+        subtitle: "Service portal with Vue.js and ECharts"
+        logo: "https://vuejs.org/images/logo.svg"
+        url: "http://localhost:5173"
