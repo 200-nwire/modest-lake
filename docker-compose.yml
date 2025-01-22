@@ -8,6 +8,21 @@ services:
     ports:
       - "19120:19120"
 
+
+  vector:
+    image: timberio/vector:0.44.0-debian
+#    container_name: vector
+    networks:
+      lakehouse:
+    ports:
+      - "8686:8686"
+    volumes:
+      - "./conf/vector/vector.yaml:/etc/vector/vector.yaml:ro"
+    environment:
+      - AWS_ACCESS_KEY_ID=admin
+      - AWS_SECRET_ACCESS_KEY=password
+      - AWS_DEFAULT_REGION=us-east-1
+
   trino:
     image: trinodb/trino
 #    container_name: trino

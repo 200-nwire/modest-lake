@@ -1,0 +1,17 @@
+api:
+  enabled: true
+  address: 0.0.0.0:8686
+sources:
+  demo_logs:
+    type: demo_logs
+    interval: 1
+    format: json
+sinks:
+  storage:
+    inputs:
+      - demo_logs
+    bucket: warehouse
+    type: aws_s3
+    endpoint: http://storage:9000
+    encoding:
+      codec: json
