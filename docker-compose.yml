@@ -101,7 +101,7 @@ services:
 
   superset:
     image: local/superset
-    build: ./superset
+    build: ./conf/superset
 #    container_name: superset
     networks:
       lakehouse:
