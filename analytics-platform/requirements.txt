@@ -1,0 +1,17 @@
+dagster
+dagit
+dlt
+dbt-core
+sqlalchemy-trino
+dagster_cube
+trino
+pandas
+requests
+pyiceberg
+
+
+dagster-dbt
+dbt-trino
+dagster-sqlalchemy
+sqlalchemy
+dlt[sqlalchemy]

@@ -1,0 +1,13 @@
+dbt_project:
+  target: local
+  outputs:
+    local:
+      type: trino
+      host: trino
+      port: 8060
+      http_scheme: http
+      user: trino-user
+      schema: cleaned
+      database: iceberg
+      threads: 1
+      retries: 3
