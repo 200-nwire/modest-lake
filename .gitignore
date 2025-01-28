@@ -1,0 +1,6 @@
+.idea
+.venv
+analytics-platform/storage
+analytics-platform/.logs_queue
+analytics-platform/.nux
+analytics-platform/.telemetry

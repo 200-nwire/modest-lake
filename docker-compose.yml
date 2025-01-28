@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   catalog:
     image: projectnessie/nessie
@@ -9,19 +8,19 @@ services:
       - "19120:19120"
 
 
-  vector:
-    image: timberio/vector:0.44.0-debian
-#    container_name: vector
-    networks:
-      lakehouse:
-    ports:
-      - "8686:8686"
-    volumes:
-      - "./conf/vector/vector.yaml:/etc/vector/vector.yaml:ro"
-    environment:
-      - AWS_ACCESS_KEY_ID=admin
-      - AWS_SECRET_ACCESS_KEY=password
-      - AWS_DEFAULT_REGION=us-east-1
+#   vector:
+#     image: timberio/vector:0.44.0-debian
+# #    container_name: vector
+#     networks:
+#       lakehouse:
+#     ports:
+#       - "8686:8686"
+#     volumes:
+#       - "./conf/vector/vector.yaml:/etc/vector/vector.yaml:ro"
+#     environment:
+#       - AWS_ACCESS_KEY_ID=admin
+#       - AWS_SECRET_ACCESS_KEY=password
+#       - AWS_DEFAULT_REGION=us-east-1
 
   trino:
     image: trinodb/trino
@@ -29,9 +28,13 @@ services:
     networks:
       lakehouse:
     ports:
-      - "8080:8080"
+      - "8060:8060"
+    environment:
+      - AWS_REGION=us-east-1
     volumes:
       - "./conf/trino/:/etc/trino/"
+      - trino-data:/var/trino/data
+    restart: always
 
   storage:
     image: minio/minio
@@ -81,36 +84,40 @@ services:
 #      lakehouse:
 #    ports:
 #      - "9047:9047"
-  sqlclient:
-    image: gethue/hue:latest
-    networks:
-      lakehouse:
-    ports:
-      - "8889:8888"
+  # sqlclient:
+  #   image: gethue/hue:latest
+  #   networks:
+  #     lakehouse:
+  #   ports:
+  #     - "8889:8888"
 
   dagster:
     image: local/dagster:latest
-    build: ./lineage
+    build: ./analytics-platform
 #    container_name: dagster
     networks:
       lakehouse:
     ports:
       - "3000:3000"
     volumes:
-      - ./lineage:/opt/dagster/app
+      #- ./lineage:/opt/dagster/app
+      - ./analytics-platform:/opt/dagster/app
+    #entrypoint: dagster dev -w /opt/dagster/app/workspace.yml -h 0.0.0.0
+    entrypoint: dagster-webserver -h 0.0.0.0
+    # command: dagit -h 0.0.0.0 -p 3000
 
-  superset:
-    image: local/superset
-    build: ./conf/superset
-#    container_name: superset
-    networks:
-      lakehouse:
-    environment:
-      SUPERSET_HOME: /app/superset_home
-      SUPERSET_SECRET_KEY: "pass"
-      SUPERSET_LOAD_EXAMPLES: "true"
-    ports:
-      - "8088:8088"
+#   superset:
+#     image: local/superset
+#     build: ./conf/superset
+# #    container_name: superset
+#     networks:
+#       lakehouse:
+#     environment:
+#       SUPERSET_HOME: /app/superset_home
+#       SUPERSET_SECRET_KEY: "pass"
+#       SUPERSET_LOAD_EXAMPLES: "true"
+#     ports:
+#       - "8088:8088"
 
 
 #  spark:
@@ -156,13 +163,13 @@ services:
 #    ports:
 #      - "5173:5173"
 
-  homer:
-    image: b4bz/homer:latest
-    container_name: homer
-    ports:
-      - "8081:8080"
-    volumes:
-      - ./conf/launchpad/config.yml:/www/assets/config.yml
+  # homer:
+  #   image: b4bz/homer:latest
+  #   container_name: homer
+  #   ports:
+  #     - "8081:8080"
+  #   volumes:
+  #     - ./conf/launchpad/config.yml:/www/assets/config.yml
 
   postgres:
     image: postgres:15
@@ -213,6 +220,7 @@ services:
 
 volumes:
   postgres_data:
+  trino-data:
 
 networks:
   lakehouse:

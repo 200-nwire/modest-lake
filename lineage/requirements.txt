@@ -11,6 +11,6 @@ pyiceberg
 
 
 dagster-dbt
+dbt-trino
 dagster-sqlalchemy
 sqlalchemy
-dagster_cube
