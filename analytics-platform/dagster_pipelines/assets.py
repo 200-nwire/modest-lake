@@ -4,12 +4,11 @@ from dagster import (
     MetadataValue,
     asset,
     OpExecutionContext,
-    graph_asset,
     AssetIn,
 )
 from dagster_dbt import DbtCliResource, dbt_assets, get_asset_key_for_model
 
-from .resources import ENV, CsvReaderResource, TrinoIcebergResource, resource_def
+from .resources import ENV, CsvReaderResource, resource_def
 import os
 from .tables import get_defnition
 dbt_parse_invocation = resource_def[ENV.upper()]["dbt"].cli(["parse"]).wait()
@@ -19,7 +18,7 @@ dbt_manifest_path = dbt_parse_invocation.target_path.joinpath("manifest.json")
 START_DATE = "2023-04-10"
 
 
-@dbt_assets(manifest=dbt_manifest_path)
+@dbt_assets(manifest=dbt_manifest_path, name= "cleaned")
 def dbt_project_assets(context: AssetExecutionContext, dbt: DbtCliResource):
     yield from dbt.cli(["build"], context=context).stream()
 
@@ -74,12 +73,3 @@ def ingest_to_iceberg(context: OpExecutionContext, raw_data: pd.DataFrame):
         }
     )
     return df
-
-
-# @graph_asset(
-#     group_name="stream_ldap",
-#     key_prefix=["stream_ldap"],
-# )
-# def stream_ldap_events_graph():
-#     raw_data = ladap_events_stream()
-#     return ingest_to_iceberg(raw_data)
